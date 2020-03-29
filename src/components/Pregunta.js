@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import Error from './Error'
+import PropTypes from 'prop-types';
 
-const Pregunta = ({setPresupuesto, setPresupuestoRestante, setMostrarPregunta}) => {
+const Pregunta = ({ setPresupuesto, setPresupuestoRestante, setMostrarPregunta }) => {
 
     const [cantidad, setCantidad] = useState(0)
     const [error, setError] = useState(false)
@@ -14,7 +15,6 @@ const Pregunta = ({setPresupuesto, setPresupuestoRestante, setMostrarPregunta}) 
         e.preventDefault();
 
         //Validar
-        console.log("presupuesto: " + cantidad)
         if (cantidad < 1 || isNaN(cantidad)) {
             setError(true)
             return;
@@ -36,7 +36,7 @@ const Pregunta = ({setPresupuesto, setPresupuestoRestante, setMostrarPregunta}) 
                 : null
             }
             <form
-                onSubmit={agregarPresupuesto}  
+                onSubmit={agregarPresupuesto}
             >
 
                 <input
@@ -55,6 +55,12 @@ const Pregunta = ({setPresupuesto, setPresupuestoRestante, setMostrarPregunta}) 
             </form>
         </Fragment>
     );
+}
+
+Pregunta.propTypes = {
+    setPresupuesto: PropTypes.func.isRequired,
+    setPresupuestoRestante: PropTypes.func.isRequired,
+    setMostrarPregunta: PropTypes.func.isRequired
 }
 
 export default Pregunta;
